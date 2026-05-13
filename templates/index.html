@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Automata Identifier</title>
+
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Automata Identifier</h1>
+
+			<form method="POST">
+				<div class="input-group">
+					<label>States</label>
+					<input type="text" name="states" placeholder="q0,q1,q2" />
+				</div>
+
+				<div class="input-group">
+					<label>Alphabet</label>
+					<input type="text" name="alphabet" placeholder="0,1" />
+				</div>
+
+				<div class="input-group">
+					<label>Start State</label>
+					<input type="text" name="start_state" placeholder="q0" />
+				</div>
+
+				<div class="input-group">
+					<label>Final States</label>
+					<input type="text" name="final_states" placeholder="q2" />
+				</div>
+
+				<button type="button" onclick="generateTable()">
+					Generate Transition Table
+				</button>
+
+				<div id="transition-table"></div>
+
+				<button type="submit" class="submit-btn">Submit Automata</button>
+			</form>
+
+			{% if data %}
+			<div class="result">
+				<h2>Input Result</h2>
+
+				<p><strong>States:</strong> {{ data.states }}</p>
+				<p><strong>Alphabet:</strong> {{ data.alphabet }}</p>
+				<p><strong>Start State:</strong> {{ data.start_state }}</p>
+				<p><strong>Final States:</strong> {{ data.final_states }}</p>
+			</div>
+			{% endif %}
+		</div>
+
+		<script src="{{ url_for('static', filename='script.js') }}"></script>
+	</body>
+</html>
